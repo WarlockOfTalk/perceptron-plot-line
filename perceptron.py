@@ -12,6 +12,9 @@ import sys
 from matplotlib import pyplot as plt
 import matplotlib.animation as animation
 
+MAX_POINT = 100
+NUM_POINTS = 20
+
 class Perceptron:
     def __init__(self, num_inputs = 2, weights = [1,1], bias = 1, learning_rate = 0.001):
         self.num_inputs = num_inputs
@@ -20,8 +23,8 @@ class Perceptron:
         self.learning_rate = learning_rate
 
     def generate_training_set(num_points):
-        x_coordinates = [random.randint(0, 100) for i in range(num_points)]
-        y_coordinates = [random.randint(0, 100) for i in range(num_points)]
+        x_coordinates = [random.randint(0, MAX_POINT) for i in range(num_points)]
+        y_coordinates = [random.randint(0, MAX_POINT) for i in range(num_points)]
         training_set = dict()
         for x, y in zip(x_coordinates, y_coordinates):
             if x <= 90-y:
@@ -64,7 +67,7 @@ class Perceptron:
             if total_error == 0:
                 best_line = True #when algorithm is complete
 
-training_set = Perceptron.generate_training_set(15)
+training_set = Perceptron.generate_training_set(NUM_POINTS)
 
 x_plus = []
 y_plus = []
@@ -103,6 +106,7 @@ def init():
     return line,
 
 ani = animation.FuncAnimation(fig, animate, frames=len(lines), init_func=init, interval = 50 ,blit = True, repeat = False)
+ani.save('animation.gif', writer='imagemagick', fps=60)
 #slope = -myPerceptron.weights[0]/myPerceptron.weights[1]
 #intercept = -myPerceptron.bias/myPerceptron.weights[1]
 #y1 = (slope * 0) + intercept
