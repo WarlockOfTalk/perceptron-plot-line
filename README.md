@@ -5,3 +5,6 @@
  - graphically displays changing of weight and bias (slope and intercept of the line)
 
 ![animation](https://github.com/WarlockOfTalk/perceptron-plot-line/blob/master/animation.gif?raw=true)
+
+## Last frame showing successfully split data points
+![last frame of animation](https://github.com/WarlockOfTalk/perceptron-plot-line/blob/master/last_frame.png)
